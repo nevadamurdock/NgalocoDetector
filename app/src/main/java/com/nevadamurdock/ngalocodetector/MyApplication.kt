@@ -1,4 +1,4 @@
-package com.byxiaorun.detector
+package com.nevadamurdock.ngalocodetector
 
 import android.annotation.SuppressLint
 import android.app.Application

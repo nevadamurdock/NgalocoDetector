@@ -28,7 +28,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.byxiaorun.detector"
+        applicationId = "com.nevadamurdock.ngalocodetector"
         minSdk = minSdkVer
         targetSdk = targetSdkVer
         versionCode = verCode

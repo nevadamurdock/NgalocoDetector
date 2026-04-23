@@ -1,4 +1,4 @@
-package com.byxiaorun.detector
+package com.nevadamurdock.ngalocodetector
 
 import android.accessibilityservice.AccessibilityServiceInfo
 import android.accounts.Account
@@ -31,10 +31,10 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
-import com.byxiaorun.detector.BuildConfig
-import com.byxiaorun.detector.MyApplication.Companion.accountList
-import com.byxiaorun.detector.MyApplication.Companion.appContext
-import com.byxiaorun.detector.MyApplication.Companion.vpn_connect
+import com.nevadamurdock.ngalocodetector.BuildConfig
+import com.nevadamurdock.ngalocodetector.MyApplication.Companion.accountList
+import com.nevadamurdock.ngalocodetector.MyApplication.Companion.appContext
+import com.nevadamurdock.ngalocodetector.MyApplication.Companion.vpn_connect
 import icu.nullptr.applistdetector.MainPage
 import icu.nullptr.applistdetector.theme.MyTheme
 import java.io.*
