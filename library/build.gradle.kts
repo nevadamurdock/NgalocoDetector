@@ -2,7 +2,7 @@ val minSdker: Int by rootProject.extra
 val targetSdker: Int by rootProject.extra
 val compileSdker: Int by rootProject.extra
 val ndker: String by rootProject.extra
-val javaer: Javaersion by rootProject.extra
+val javaer: JavaVersion by rootProject.extra
 
 plugins {
     id("com.android.library")

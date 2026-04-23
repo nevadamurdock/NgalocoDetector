@@ -23,8 +23,8 @@ fun String.execute(currentWorkingDir: File = file("./")): String {
     return String(byteOut.toByteArray()).trim()
 }
 
-val verCode: String by extra("1") 
-val javaVersion by extra(JavaVersion.VERSION_11)
+val verCode: String by extra
+var verName by extra("")
 
 val minSdker by extra(23)
 val targetSdker by extra(29)

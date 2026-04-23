@@ -13,7 +13,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          submodules: recursive # Memastikan jika ada submodule ikut terunduh
+          submodules: recursive
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -29,25 +29,18 @@ jobs:
 
       - name: Fix Missing LSS Header
         run: |
-          # Membuat direktori jika belum ada (sesuaikan dengan struktur folder library)
           mkdir -p library/src/main/cpp/include
-          # Download linux_syscall_support.h dari chromium source
-          curl -Lo library/src/main/cpp/include/linux_syscall_support.h https://chromium.googlesource.com/linux-syscall-support/+/master/linux_syscall_support.h?format=TEXT | base64 --decode > library/src/main/cpp/include/linux_syscall_support.h
-          # Atau jika path-nya flat, kita taruh di folder src langsung
+          curl -Lo library/src/main/cpp/include/linux_syscall_support.h "https://chromium.googlesource.com/linux-syscall-support/+/master/linux_syscall_support.h?format=TEXT" | base64 --decode > library/src/main/cpp/include/linux_syscall_support.h
           cp library/src/main/cpp/include/linux_syscall_support.h library/src/main/cpp/src/linux_syscall_support.h
 
-      - name: Grant Execute Permission for Gradlew
+      - name: Grant Execute Permission
         run: chmod +x gradlew
 
       - name: Build Debug APK
         run: ./gradlew assembleDebug
 
-      - name: Get Current Date
-        id: date
-        run: echo "date=$(date +'%Y%m%d-%H%M')" >> $GITHUB_OUTPUT
-
-      - name: Upload APK Artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: NgalocoDetector-${{ steps.date.outputs.date }}-APK
+          name: NgalocoDetector-NewPackage-APK
           path: app/build/outputs/apk/debug/*.apk
