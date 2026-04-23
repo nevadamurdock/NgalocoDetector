@@ -1,11 +1,9 @@
-name: Build NgalocoDetector
+name: Build NgalocoDetector APK
 
 on:
   push:
-    branches: [ "main", "master" ]
-  pull_request:
-    branches: [ "main", "master" ]
-  workflow_dispatch: # Memungkinkan menjalankan build secara manual
+    branches: [ "new", "main", "master" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -15,20 +13,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Environment
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y zip tar
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
 
-      - name: Build/Package Project
-        run: |
-          # Contoh: Mengompres file menjadi paket rilis
-          mkdir output
-          cp -r * output/ 2>/dev/null || true
-          zip -r NgalocoDetector-build.zip output/
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
-      - name: Upload Artifact
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug
+
+      - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: NgalocoDetector-Package
-          path: NgalocoDetector-build.zip
+          name: NgalocoDetector-Debug-APK
+          path: app/build/outputs/apk/debug/*.apk
