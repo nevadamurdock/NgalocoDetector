@@ -1,7 +1,7 @@
 package icu.nullptr.applistdetector.component
 
 /**
- *Created by byxiaorun on 2022/5/13/0013.
+ *Created by Nevada Murdock on 2022/5/13/0013.
  */
 
 import androidx.compose.animation.animateContentSize
@@ -52,14 +52,14 @@ fun CheckCard2(
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.Centerertically
             ) {
                 val map = resultMap[result]!!
                 Icon(map.first, map.second)
                 Text(text = title, style = MaterialTheme.typography.titleMedium)
                 val rotateAngel by animateFloatAsState(if (expanded) 180f else 0f)
                 Icon(
-                    imageVector = Icons.Filled.ArrowDropDown,
+                    imageector = Icons.Filled.ArrowDropDown,
                     contentDescription = "Expand",
                     modifier = Modifier
                         .rotate(rotateAngel)
@@ -71,7 +71,7 @@ fun CheckCard2(
                 Column(Modifier.padding(top = 16.dp)) {
                     detail!!.forEachIndexed { index, item ->
                         val map = resultMap[item.second]!!
-                        Row(verticalAlignment = Alignment.CenterVertically) {
+                        Row(verticalAlignment = Alignment.Centerertically) {
                             Icon(map.first, map.second, Modifier.size(16.dp))
                             Spacer(Modifier.width(4.dp))
                             Text(text = item.first, style = MaterialTheme.typography.bodyMedium)

@@ -9,7 +9,7 @@ class PMSundryAPIs(context: Context, override val name: String) : IDetector(cont
     //override val name = "PM Sundry APIs"
 
     private fun getPackageUid(name: String): Boolean {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        if (Build.ERSION.SDK_INT >= Build.ERSION_CODES.N) {
             try {
                 context.packageManager.getPackageUid(name, 0)
                 return true
@@ -20,7 +20,7 @@ class PMSundryAPIs(context: Context, override val name: String) : IDetector(cont
     }
 
     private fun getInstallSourceInfo(name: String): Boolean {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        if (Build.ERSION.SDK_INT >= Build.ERSION_CODES.R) {
             try {
                 context.packageManager.getInstallSourceInfo(name)
                 return true

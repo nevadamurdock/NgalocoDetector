@@ -9,8 +9,8 @@ import java.io.File
 
 class MagiskApp(context: Context, override val name: String) : IDetector(context) {
 
-    private val flags = PackageManager.GET_ACTIVITIES or PackageManager.GET_SERVICES or
-            PackageManager.GET_PROVIDERS or PackageManager.GET_RECEIVERS or
+    private val flags = PackageManager.GET_ACTIITIES or PackageManager.GET_SERICES or
+            PackageManager.GET_PROIDERS or PackageManager.GET_RECEIERS or
             PackageManager.MATCH_DIRECT_BOOT_AWARE or PackageManager.MATCH_DIRECT_BOOT_UNAWARE or
             PackageManager.GET_PERMISSIONS
 

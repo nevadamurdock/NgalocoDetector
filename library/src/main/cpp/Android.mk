@@ -3,7 +3,7 @@ define walk
   $(wildcard $(1)) $(foreach e, $(wildcard $(1)/*), $(call walk, $(e)))
 endef
 
-include $(CLEAR_VARS)
+include $(CLEAR_ARS)
 LOCAL_MODULE           := applist_detector
 LOCAL_C_INCLUDES       := $(LOCAL_PATH)/external/linux_syscall_support $(LOCAL_PATH)/src
 FILE_LIST              := $(filter %.c %.cpp, $(call walk, $(LOCAL_PATH)/src))

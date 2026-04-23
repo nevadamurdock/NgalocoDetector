@@ -20,4 +20,4 @@
 ##### GNU General Public License v3.0
 [LSPosed/LSPatch](https://github.com/LSPosed/LSPatch)
 ##### MIT License
-[AoEiuV020/IAmNotDisabled](https://github.com/AoEiuV020/IAmNotDisabled/blob/main/LICENSE)
+[AoEiu020/IAmNotDisabled](https://github.com/AoEiu020/IAmNotDisabled/blob/main/LICENSE)

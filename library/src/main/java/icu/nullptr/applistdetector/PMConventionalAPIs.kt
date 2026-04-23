@@ -15,7 +15,7 @@ class PMConventionalAPIs(context: Context, override val name: String) : IDetecto
         val list = mutableSetOf<String>()
         context.packageManager.getInstalledPackages(0).forEach { list.add(it.packageName) }
         context.packageManager.getInstalledApplications(0).forEach { list.add(it.packageName) }
-        if (list.size == 0) result = Result.METHOD_UNAVAILABLE
+        if (list.size == 0) result = Result.METHOD_UNAAILABLE
         if (list.size == 1) result = Result.SUSPICIOUS
 
         for (packageName in packages) {

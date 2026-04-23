@@ -12,15 +12,15 @@ properties.load(rootProject.file("local.properties").inputStream())
 val verCode: Int by rootProject.extra
 val verName: String by rootProject.extra
 
-val minSdkVer: Int by rootProject.extra
-val targetSdkVer: Int by rootProject.extra
-val compileSdkVer: Int by rootProject.extra
-val ndkVer: String by rootProject.extra
-val javaVer: JavaVersion by rootProject.extra
+val minSdker: Int by rootProject.extra
+val targetSdker: Int by rootProject.extra
+val compileSdker: Int by rootProject.extra
+val ndker: String by rootProject.extra
+val javaer: Javaersion by rootProject.extra
 
 android {
-    compileSdk = compileSdkVer
-    ndkVersion = ndkVer
+    compileSdk = compileSdker
+    ndkersion = ndker
 
     buildFeatures {
         compose = true
@@ -29,8 +29,8 @@ android {
 
     defaultConfig {
         applicationId = "com.nevadamurdock.ngalocodetector"
-        minSdk = minSdkVer
-        targetSdk = targetSdkVer
+        minSdk = minSdker
+        targetSdk = targetSdker
         versionCode = verCode
         versionName = verName
     }
@@ -56,12 +56,12 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0"
+        kotlinCompilerExtensionersion = "1.2.0"
     }
 
     compileOptions {
-        sourceCompatibility = javaVer
-        targetCompatibility = javaVer
+        sourceCompatibility = javaer
+        targetCompatibility = javaer
     }
 
     kotlinOptions {

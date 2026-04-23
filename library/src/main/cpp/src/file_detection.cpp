@@ -6,7 +6,7 @@
 volatile bool syscallFailed;
 
 enum Result {
-    NOT_FOUND, METHOD_UNAVAILABLE, SUSPICIOUS, FOUND
+    NOT_FOUND, METHOD_UNAAILABLE, SUSPICIOUS, FOUND
 } result;
 
 void SignalHandler(int) {
@@ -18,7 +18,7 @@ void UpdateResult(Result out) {
 }
 
 void SyscallDetect(int call) {
-    UpdateResult(syscallFailed ? METHOD_UNAVAILABLE : (call == 0 || errno == EPERM ? FOUND : NOT_FOUND));
+    UpdateResult(syscallFailed ? METHOD_UNAAILABLE : (call == 0 || errno == EPERM ? FOUND : NOT_FOUND));
     syscallFailed = false;
 }
 

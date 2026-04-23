@@ -17,7 +17,7 @@ class AbnormalEnvironment(
 
     private fun detectFile(path: String): Result {
         var res = FileDetection.detect(path, true)
-        if (res == Result.METHOD_UNAVAILABLE) res = FileDetection.detect(path, false)
+        if (res == Result.METHOD_UNAAILABLE) res = FileDetection.detect(path, false)
         if (res == Result.FOUND) res = Result.SUSPICIOUS
         return res
     }

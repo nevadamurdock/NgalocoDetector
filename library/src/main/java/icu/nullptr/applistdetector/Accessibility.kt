@@ -16,10 +16,10 @@ class Accessibility (context: Context, var accList: List<String>,
             detail?.add(it)
         }
         if (accenable==true){
-            add(Pair("AccessibilitySERVICES.isEnabled", Result.SUSPICIOUS))
+            add(Pair("AccessibilitySERICES.isEnabled", Result.SUSPICIOUS))
 
         }else{
-            add(Pair("AccessibilitySERVICES", Result.NOT_FOUND))
+            add(Pair("AccessibilitySERICES", Result.NOT_FOUND))
         }
         if (accList.isNotEmpty()) {
             accList.forEach { add(Pair(it, Result.SUSPICIOUS)) }

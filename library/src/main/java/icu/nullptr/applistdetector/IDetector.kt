@@ -7,7 +7,7 @@ typealias Detail = MutableCollection<Pair<String, IDetector.Result>>
 abstract class IDetector(protected val context: Context) {
 
     enum class Result {
-        NOT_FOUND, METHOD_UNAVAILABLE, SUSPICIOUS, FOUND
+        NOT_FOUND, METHOD_UNAAILABLE, SUSPICIOUS, FOUND
     }
 
     abstract val name: String

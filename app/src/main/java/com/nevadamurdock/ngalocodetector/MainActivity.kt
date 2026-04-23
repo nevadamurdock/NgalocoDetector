@@ -3,7 +3,7 @@ package com.nevadamurdock.ngalocodetector
 import android.accessibilityservice.AccessibilityServiceInfo
 import android.accounts.Account
 import android.accounts.AccountManager
-import android.content.Context.CONNECTIVITY_SERVICE
+import android.content.Context.CONNECTIITY_SERICE
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.Uri
@@ -43,7 +43,7 @@ import java.util.*
 
 
 /**
- *Created by byxiaorun on 2022/4/20/0020.
+ *Created by Nevada Murdock on 2022/4/20/0020.
  */
 class MainActivity : ComponentActivity() {
 
@@ -73,7 +73,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun MainTopBar() {
     CenterAlignedTopAppBar(
-        title = { Text(stringResource(id = R.string.app_name) +" V${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})") }
+        title = { Text(stringResource(id = R.string.app_name) +" ${BuildConfig.ERSION_NAME} (${BuildConfig.ERSION_CODE})") }
     )
 }
 
@@ -100,34 +100,34 @@ private fun AboutDialog(onDismiss: () -> Unit) {
         text = {
             Column(horizontalAlignment = Alignment.Start) {
                 CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.bodyLarge) {
-                    Text(stringResource(R.string.app_name) +" V${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})")
-                    Text(stringResource(R.string.authored) +": Nullptr & byxiaorun")
+                    Text(stringResource(R.string.app_name) +" ${BuildConfig.ERSION_NAME} (${BuildConfig.ERSION_CODE})")
+                    Text(stringResource(R.string.authored) +": Nullptr & Nevada Murdock")
                 }
                 Spacer(Modifier.height(10.dp))
                 val annotatedString = buildAnnotatedString {
-                    pushStringAnnotation("GitHub", "https://github.com/byxiaorun/ApplistDetector/tree/new")
+                    pushStringAnnotation("GitHub", "https://github.com/Nevada Murdock/ApplistDetector/tree/new")
                     withStyle(SpanStyle(color = MaterialTheme.colorScheme.primary)) {
                         append(appContext.getString(R.string.source))
                     }
                     pop()
                     append("  ")
-                    pushStringAnnotation("Telegram", "https://t.me/HideMyApplist")
+                    pushStringAnnotation("Telegram", "https://t.me/GusKernel
                     withStyle(SpanStyle(color = MaterialTheme.colorScheme.primary)) {
                         append(appContext.getString(R.string.telegram))
                     }
                     pop()
                     append("  ")
-                    pushStringAnnotation("Telegram", "https://t.me/xrshop")
+                    pushStringAnnotation("Telegram", "https://t.me/GusKernel
                     withStyle(SpanStyle(color = MaterialTheme.colorScheme.primary)) {
                         append(appContext.getString(R.string.telegram))
                     }
                 }
                 ClickableText(annotatedString, style = MaterialTheme.typography.bodyLarge) { offset ->
                     annotatedString.getStringAnnotations("GitHub", offset, offset).firstOrNull()?.let {
-                        ContextCompat.startActivity(context, Intent(Intent.ACTION_VIEW, Uri.parse(it.item)), null)
+                        ContextCompat.startActivity(context, Intent(Intent.ACTION_IEW, Uri.parse(it.item)), null)
                     }
                     annotatedString.getStringAnnotations("Telegram", offset, offset).firstOrNull()?.let {
-                        ContextCompat.startActivity(context, Intent(Intent.ACTION_VIEW, Uri.parse(it.item)), null)
+                        ContextCompat.startActivity(context, Intent(Intent.ACTION_IEW, Uri.parse(it.item)), null)
                     }
                 }
             }
@@ -184,14 +184,14 @@ private fun getFromAccessibilityManager(): List<String> {
 
 private fun getFromSettingsSecure():List<String> {
     try {
-        val settingValue= Settings.Secure.getString(
+        val settingalue= Settings.Secure.getString(
             appContext.contentResolver,
-            Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES
+            Settings.Secure.ENABLED_ACCESSIBILITY_SERICES
         )
-        val nameList=if (settingValue.isNullOrEmpty()){
+        val nameList=if (settingalue.isNullOrEmpty()){
             emptyList()
         }else{
-            settingValue.split(':')
+            settingalue.split(':')
         }.toMutableList()
         val enabled = Settings.Secure.getInt(appContext.contentResolver, Settings.Secure.ACCESSIBILITY_ENABLED)
         if (enabled != 0) {
@@ -207,14 +207,14 @@ private fun getFromSettingsSecure():List<String> {
 
 
 fun checkSetting() {
-    if((Settings.Secure.getInt(appContext.contentResolver,Settings.Global.DEVELOPMENT_SETTINGS_ENABLED,0)==1)){ MyApplication.development_enable=true }
+    if((Settings.Secure.getInt(appContext.contentResolver,Settings.Global.DEELOPMENT_SETTINGS_ENABLED,0)==1)){ MyApplication.development_enable=true }
     if((Settings.Secure.getInt(appContext.contentResolver,Settings.Global.ADB_ENABLED,0)==1
 
                 )){ MyApplication.adbenable=true }
 
     try {
         vpn_connect = NetworkInterface.getNetworkInterfaces()?.toList()?.any { it.isUp && it.interfaceAddresses.isNotEmpty() && (it.name == "tun0" || it.name == "ppp0") } == true ||
-                (appContext.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager).getNetworkInfo(17)?.isConnectedOrConnecting == true ||
+                (appContext.getSystemService(CONNECTIITY_SERICE) as ConnectivityManager).getNetworkInfo(17)?.isConnectedOrConnecting == true ||
                 (!System.getProperty("http.proxyHost").isNullOrEmpty() && (System.getProperty("http.proxyPort")?.toIntOrNull() ?: -1) != -1)
     } catch (e: Throwable) { e.printStackTrace() }
 }

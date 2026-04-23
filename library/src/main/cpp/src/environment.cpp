@@ -15,11 +15,11 @@ Java_icu_nullptr_applistdetector_AbnormalEnvironment_detectXposed(JNIEnv* env, j
 }
 
 
-jint JNI_OnLoad(JavaVM* jvm, void*) {
+jint JNI_OnLoad(JavaM* jvm, void*) {
     JNIEnv* env;
-    if (jvm->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6) != JNI_OK) {
+    if (jvm->GetEnv(reinterpret_cast<void**>(&env), JNI_ERSION_1_6) != JNI_OK) {
         return JNI_ERR;
     }
     xposed_status = get_xposed_status(env, android_get_device_api_level());
-    return JNI_VERSION_1_6;
+    return JNI_ERSION_1_6;
 }

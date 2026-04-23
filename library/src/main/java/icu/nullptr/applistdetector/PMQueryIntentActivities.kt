@@ -19,7 +19,7 @@ class PMQueryIntentActivities(context: Context, override val name: String) : IDe
         val intent = Intent(Intent.ACTION_MAIN)
         for (pkg in context.packageManager.queryIntentActivities(intent, PackageManager.MATCH_ALL))
             list.add(pkg.activityInfo.packageName)
-        if (list.size == 0) result = Result.METHOD_UNAVAILABLE
+        if (list.size == 0) result = Result.METHOD_UNAAILABLE
         if (list.size == 1) result = Result.SUSPICIOUS
 
         for (packageName in packages) {

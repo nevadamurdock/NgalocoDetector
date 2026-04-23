@@ -58,7 +58,7 @@ fun CheckCard(
                     modifier = Modifier.weight(2f))
                 val rotateAngel by animateFloatAsState(if (expanded) 180f else 0f)
                 Icon(
-                    imageVector = Icons.Filled.ArrowDropDown,
+                    imageector = Icons.Filled.ArrowDropDown,
                     contentDescription = "Expand",
                     modifier = Modifier
                         .rotate(rotateAngel)
@@ -71,7 +71,7 @@ fun CheckCard(
                 Column(Modifier.padding(top = 16.dp)) {
                     detail!!.forEachIndexed { index, item ->
                         val map = resultMap[item.second]!!
-                        Row(verticalAlignment = Alignment.CenterVertically) {
+                        Row(verticalAlignment = Alignment.Centerertically) {
                             Text(text = item.first,
                                 style = MaterialTheme.typography.bodyMedium,
                                 modifier = Modifier.weight(4f))

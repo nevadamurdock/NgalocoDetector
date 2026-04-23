@@ -32,11 +32,11 @@ class PMCommand(context: Context, override val name: String) : IDetector(context
                 }
             }
             p.destroy()
-            if (list.size == 0) result = Result.METHOD_UNAVAILABLE
+            if (list.size == 0) result = Result.METHOD_UNAAILABLE
             if (list.size == 1) result = Result.SUSPICIOUS
         } catch (e: Exception) {
             e.printStackTrace()
-            result = Result.METHOD_UNAVAILABLE
+            result = Result.METHOD_UNAAILABLE
         }
 
         for (packageName in packages) {

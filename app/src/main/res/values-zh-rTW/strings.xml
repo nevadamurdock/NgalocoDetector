@@ -24,6 +24,6 @@
     <item>設置屬性</item>
     <item>已開啓開發者選項</item>
     <item>已開啓usb調試</item>
-    <item>已鏈接VPN服務/HTTP代理</item>
+    <item>已鏈接PN服務/HTTP代理</item>
   </string-array>
 </resources>

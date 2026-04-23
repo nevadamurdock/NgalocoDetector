@@ -1,8 +1,8 @@
-val minSdkVer: Int by rootProject.extra
-val targetSdkVer: Int by rootProject.extra
-val compileSdkVer: Int by rootProject.extra
-val ndkVer: String by rootProject.extra
-val javaVer: JavaVersion by rootProject.extra
+val minSdker: Int by rootProject.extra
+val targetSdker: Int by rootProject.extra
+val compileSdker: Int by rootProject.extra
+val ndker: String by rootProject.extra
+val javaer: Javaersion by rootProject.extra
 
 plugins {
     id("com.android.library")
@@ -11,16 +11,16 @@ plugins {
 
 android {
     namespace = "icu.nullptr.applistdetector.library"
-    compileSdk = compileSdkVer
-    ndkVersion = ndkVer
+    compileSdk = compileSdker
+    ndkersion = ndker
 
     buildFeatures {
         prefab = true
     }
 
     defaultConfig {
-        minSdk = minSdkVer
-        targetSdk = targetSdkVer
+        minSdk = minSdker
+        targetSdk = targetSdker
 
         externalNativeBuild.ndkBuild {
             arguments += "-j${Runtime.getRuntime().availableProcessors()}"
@@ -40,8 +40,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = javaVer
-        targetCompatibility = javaVer
+        sourceCompatibility = javaer
+        targetCompatibility = javaer
     }
 
     kotlinOptions {

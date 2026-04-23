@@ -5,7 +5,7 @@ import android.app.Application
 import android.content.Context
 
 /**
- *Created by byxiaorun on 2022/4/20/0020.
+ *Created by Nevada Murdock on 2022/4/20/0020.
  */
 class MyApplication : Application() {
 

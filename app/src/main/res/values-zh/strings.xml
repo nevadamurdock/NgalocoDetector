@@ -24,6 +24,6 @@
     <item>设置属性</item>
     <item>已开启开发者选项</item>
     <item>已开启usb调试</item>
-    <item>已连接VPN服务/HTTP代理</item>
+    <item>已连接PN服务/HTTP代理</item>
   </string-array>
 </resources>

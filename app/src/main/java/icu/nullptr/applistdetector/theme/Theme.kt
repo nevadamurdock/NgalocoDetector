@@ -9,8 +9,8 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalView
-import androidx.core.view.ViewCompat
+import androidx.compose.ui.platform.Localiew
+import androidx.core.view.iewCompat
 
 private val DarkColorScheme = darkColorScheme(
     primary = Color(0xFF5DD4FC),
@@ -37,8 +37,8 @@ private val DarkColorScheme = darkColorScheme(
     onBackground = Color(0xFFE1E3E5),
     surface = Color(0xFF191C1D),
     onSurface = Color(0xFFE1E3E5),
-    surfaceVariant = Color(0xFF40484C),
-    onSurfaceVariant = Color(0xFFC0C8CC),
+    surfaceariant = Color(0xFF40484C),
+    onSurfaceariant = Color(0xFFC0C8CC),
     outline = Color(0xFF8A9296)
 )
 
@@ -67,8 +67,8 @@ private val LightColorScheme = lightColorScheme(
     onBackground = Color(0xFF191C1D),
     surface = Color(0xFFF9FDFF),
     onSurface = Color(0xFF191C1D),
-    surfaceVariant = Color(0xFFF9FDFF),
-    onSurfaceVariant = Color(0xFF40484C),
+    surfaceariant = Color(0xFFF9FDFF),
+    onSurfaceariant = Color(0xFF40484C),
     outline = Color(0xFF70787C)
 )
 
@@ -79,18 +79,18 @@ fun MyTheme(
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
-        enableDynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+        enableDynamicColor && Build.ERSION.SDK_INT >= Build.ERSION_CODES.S -> {
             val context = LocalContext.current
             if (isDarkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
         isDarkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
-    val view = LocalView.current
+    val view = Localiew.current
     if (!view.isInEditMode) {
         SideEffect {
             (view.context as Activity).window.statusBarColor = colorScheme.background.toArgb()
-            ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = !isDarkTheme
+            iewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = !isDarkTheme
         }
     }
 

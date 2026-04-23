@@ -17,8 +17,8 @@ import icu.nullptr.applistdetector.IDetector
 val resultMap = mapOf(
     null to (Icons.Filled.HourglassEmpty to "Pending"),
     IDetector.Result.NOT_FOUND to (Icons.Filled.Done to gettext("not_found")[0]),
-    IDetector.Result.METHOD_UNAVAILABLE to (Icons.Filled.CodeOff to gettext("method")[0]),
-    IDetector.Result.SUSPICIOUS to (Icons.Filled.Visibility to gettext("suspicious")[0]),
+    IDetector.Result.METHOD_UNAAILABLE to (Icons.Filled.CodeOff to gettext("method")[0]),
+    IDetector.Result.SUSPICIOUS to (Icons.Filled.isibility to gettext("suspicious")[0]),
     IDetector.Result.FOUND to (Icons.Filled.Coronavirus to gettext("found")[0])
 )
 
@@ -34,14 +34,14 @@ fun IconHintCard() {
         horizontalArrangement = Arrangement.Center
     ) {
         Column(modifier = Modifier.wrapContentWidth()) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(verticalAlignment = Alignment.Centerertically) {
                 val notFound = resultMap[IDetector.Result.NOT_FOUND]!!
                 Icon(notFound.first, null)
                 Spacer(Modifier.width(4.dp))
                 Text(notFound.second)
             }
             Spacer(Modifier.height(4.dp))
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(verticalAlignment = Alignment.Centerertically) {
                 val suspicious = resultMap[IDetector.Result.SUSPICIOUS]!!
                 Icon(suspicious.first, null)
                 Spacer(Modifier.width(4.dp))
@@ -50,14 +50,14 @@ fun IconHintCard() {
         }
         Spacer(Modifier.width(24.dp))
         Column(modifier = Modifier.wrapContentWidth()) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                val notAvailable = resultMap[IDetector.Result.METHOD_UNAVAILABLE]!!
+            Row(verticalAlignment = Alignment.Centerertically) {
+                val notAvailable = resultMap[IDetector.Result.METHOD_UNAAILABLE]!!
                 Icon(notAvailable.first, null)
                 Spacer(Modifier.width(4.dp))
                 Text(notAvailable.second)
             }
             Spacer(Modifier.height(4.dp))
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(verticalAlignment = Alignment.Centerertically) {
                 val found = resultMap[IDetector.Result.FOUND]!!
                 Icon(found.first, null)
                 Spacer(Modifier.width(4.dp))
