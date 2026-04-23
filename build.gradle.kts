@@ -24,7 +24,7 @@ fun String.execute(currentWorkingDir: File = file("./")): String {
 }
 
 val verCode by extra(16)
-var verName by extra("1.1.1")
+var verName by extra("")
 
 val minSdkVer by extra(23)
 val targetSdkVer by extra(29)
