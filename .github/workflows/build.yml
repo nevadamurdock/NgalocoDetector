@@ -3,8 +3,6 @@ name: Build NgalocoDetector APK
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -21,6 +19,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: gradle
+
+      - name: Create local.properties
+        run: |
+          # Membuat file local.properties agar gradle tidak error
+          touch local.properties
+          # Jika project butuh path SDK, GitHub Actions sudah menyediakannya secara default
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
 
       - name: Grant Execute Permission for Gradlew
         run: chmod +x gradlew
