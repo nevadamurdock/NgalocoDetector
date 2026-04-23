@@ -24,13 +24,13 @@ fun String.execute(currentWorkingDir: File = file("./")): String {
 }
 
 val verCode by extra(16)
-var verName by extra("1.0")
+var verName by extra("1.1.1")
 
-val minSdker by extra(23)
-val targetSdker by extra(29)
-val compileSdker by extra(33)
-val ndker by extra("25.0.8775105")
-val javaer: JavaVersion by extra(JavaVersion.VERSION_11)
+val minSdkVer by extra(23)
+val targetSdkVer by extra(29)
+val compileSdkVer by extra(33)
+val ndkVer by extra("25.0.8775105")
+val javaVer by extra(JavaVersion.VERSION_11)
 
 tasks.register<Delete>("clean") {
     delete(rootProject.buildDir)
