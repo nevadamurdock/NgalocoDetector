@@ -31,16 +31,28 @@ jobs:
         run: |
           mkdir -p library/src/main/cpp/include
           curl -Lo library/src/main/cpp/include/linux_syscall_support.h "https://chromium.googlesource.com/linux-syscall-support/+/master/linux_syscall_support.h?format=TEXT" | base64 --decode > library/src/main/cpp/include/linux_syscall_support.h
-          cp library/src/main/cpp/include/linux_syscall_support.h library/src/main/cpp/src/linux_syscall_support.h
+          cp library/src/main/cpp/include/linux_syscall_support.h library/src/main/cpp/src/linux_syscall_support.h || true
+
+      - name: Validate and Repair Gradle Wrapper
+        run: |
+          # Jika jar hilang atau rusak, kita download versi standar agar build tetap jalan
+          if [ ! -f "gradle/wrapper/gradle-wrapper.jar" ]; then
+            echo "Gradle wrapper jar not found! Downloading..."
+            curl -Lo gradle/wrapper/gradle-wrapper.jar https://github.com/gradle/gradle/raw/v7.5.0/gradle/wrapper/gradle-wrapper.jar
+          fi
 
       - name: Grant Execute Permission
         run: chmod +x gradlew
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleDebug --stacktrace
 
-      - name: Upload APK
+      - name: Get Current Date
+        id: date
+        run: echo "date=$(date +'%Y%m%d-%H%M')" >> $GITHUB_OUTPUT
+
+      - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: NgalocoDetector-NewPackage-APK
+          name: NgalocoDetector-${{ steps.date.outputs.date }}-APK
           path: app/build/outputs/apk/debug/*.apk

@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -22,24 +21,15 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Create local.properties
+      - name: Repair Broken Strings (Emergency)
         run: |
-          touch local.properties
-          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+          find . -type f -name "*.kts" -exec sed -i 's/Javaersion/JavaVersion/g' {} +
+          find . -type f -name "*.kts" -exec sed -i 's/ERSION_11/VERSION_11/g' {} +
 
-      - name: Fix Missing LSS Header
+      - name: Restore Gradle Wrapper Jar
         run: |
-          mkdir -p library/src/main/cpp/include
-          curl -Lo library/src/main/cpp/include/linux_syscall_support.h "https://chromium.googlesource.com/linux-syscall-support/+/master/linux_syscall_support.h?format=TEXT" | base64 --decode > library/src/main/cpp/include/linux_syscall_support.h
-          cp library/src/main/cpp/include/linux_syscall_support.h library/src/main/cpp/src/linux_syscall_support.h || true
-
-      - name: Validate and Repair Gradle Wrapper
-        run: |
-          # Jika jar hilang atau rusak, kita download versi standar agar build tetap jalan
-          if [ ! -f "gradle/wrapper/gradle-wrapper.jar" ]; then
-            echo "Gradle wrapper jar not found! Downloading..."
-            curl -Lo gradle/wrapper/gradle-wrapper.jar https://github.com/gradle/gradle/raw/v7.5.0/gradle/wrapper/gradle-wrapper.jar
-          fi
+          mkdir -p gradle/wrapper
+          curl -Lo gradle/wrapper/gradle-wrapper.jar https://github.com/gradle/gradle/raw/v7.5.0/gradle/wrapper/gradle-wrapper.jar
 
       - name: Grant Execute Permission
         run: chmod +x gradlew
@@ -47,12 +37,8 @@ jobs:
       - name: Build Debug APK
         run: ./gradlew assembleDebug --stacktrace
 
-      - name: Get Current Date
-        id: date
-        run: echo "date=$(date +'%Y%m%d-%H%M')" >> $GITHUB_OUTPUT
-
-      - name: Upload APK Artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: NgalocoDetector-${{ steps.date.outputs.date }}-APK
+          name: NgalocoDetector-Fixed-APK
           path: app/build/outputs/apk/debug/*.apk
